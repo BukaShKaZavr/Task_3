@@ -2,14 +2,9 @@ from selenium.webdriver.common.by import By
 
 class ConstructorPageLocators:
 
-
-    modal_window = (By.XPATH, '//*[@class = "Modal_modal_overlay__x2ZCr"]')
-    profile_button = (By.XPATH, '//*[(contains(@class,"AppHeader_header__linkText__3q_va")) and (text() = "Личный Кабинет")]')
-    constructor_button = (By.XPATH, '//*[(contains(@class,"AppHeader_header__linkText__3q_va")) and (text() = "Конструктор")]')
     constructor_title = (By.XPATH, '//*[@class = "text text_type_main-large mb-5 mt-10" and text() = "Соберите бургер"]')
-    order_list_button = (By.XPATH, '//*[(contains(@class,"AppHeader_header__linkText__3q_va")) and (text() = "Лента Заказов")]')
     order_list_title = (By.XPATH, '//*[@class = "text text_type_main-large mt-10 mb-5" and text() = "Лента заказов"]')
-    orders_list = (By.XPATH, '//*[@class="OrderHistory_listItem__2x95r mb-6"]//*[@class="text text_type_digits-default"]')
+
     place_order_button = (By.XPATH, '//*[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg"]')
     ingredients_list = (By.XPATH, '//*[@class="BurgerIngredients_ingredients__menuContainer__Xu3Mo"]/ul/a')
     ingredient_counter = (By.XPATH, './/*[@class="counter_counter__num__3nue1"]')

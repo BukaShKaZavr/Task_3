@@ -2,6 +2,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 import data
+from locators.base_page_locators import BasePageLocators
 
 
 class BasePage:
@@ -13,6 +14,21 @@ class BasePage:
 
     def go_to_url(self, url):
         self.driver.get(url)
+
+    def go_to_constructor_menu(self):
+        self.element_is_not_visible(BasePageLocators.modal_window)
+        self.click_element(BasePageLocators.constructor_button)
+
+    def go_to_order_list(self):
+        self.element_is_not_visible(BasePageLocators.modal_window)
+        self.click_element(BasePageLocators.order_list_button)
+
+    def go_to_profile_menu(self):
+        self.element_is_not_visible(BasePageLocators.modal_window)
+        self.click_element(BasePageLocators.profile_button)
+
+    def wait_for_modal_window_to_disappear(self):
+        self.element_is_not_visible(BasePageLocators.modal_window)
 
     def find_element_with_wait(self, locator):
         self.wait.until(expected_conditions.visibility_of_element_located(locator))
@@ -55,10 +71,6 @@ class BasePage:
                     return False
             return True
         return self.wait.until(check_elements)
-
-    def wait_text(self, locator, text):
-        self.wait.until_not(expected_conditions.text_to_be_present_in_element(locator, text))
-        return self.driver.find_element(*locator).text
 
     def wait_for_order_not_default(self, locator):
         element = self.find_element_with_wait(locator)
