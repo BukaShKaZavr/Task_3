@@ -2,10 +2,7 @@ import pytest
 
 import api_methods
 import api_requests
-import urls
 from helpers import WebdriverFactory
-from locators.constructor_page_locators import ConstructorPageLocators
-from locators.login_page_locators import LoginPageLocators
 from pages.login_page import LoginPage
 from pages.constructor_page import ConstructorPage
 from pages.profile_page import ProfilePage
@@ -16,13 +13,7 @@ from pages.order_list_page import OrderListPage
 def create_and_login_user(driver, requests_object):
     user = api_methods.register_new_user_and_return_login_password()
     login_page = LoginPage(driver)
-    login_page.go_to_url(urls.base_url)
-    login_page.element_is_not_visible(ConstructorPageLocators.modal_window)
-    login_page.click_element(ConstructorPageLocators.profile_button)
-    login_page.add_text(LoginPageLocators.login_email, user[0])
-    login_page.add_text(LoginPageLocators.login_password, user[1])
-    login_page.click_element(LoginPageLocators.login_button)
-    login_page.element_is_not_visible(ConstructorPageLocators.modal_window)
+    login_page.login(user[0], user[1])
 
     yield driver
 
